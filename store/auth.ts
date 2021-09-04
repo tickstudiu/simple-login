@@ -4,6 +4,7 @@ const defaultCookieOptions = {
     sameSite: 'lax',
     // secure: true, // TODO: Open this on production
 }
+import {LoginForm} from '@/types/auth'
 
 export default {
     state: () => ({
@@ -64,12 +65,20 @@ export default {
         },
 
         async login(
-            { commit, dispatch }: any
+            { commit, dispatch }: any,
+            { username, password }: LoginForm
         ) {
             try {
                 commit('SET_LOADING', true)
+                const { app }: any = this
+                const response: any = await app.$services.auth.login({ username, password})
+                
 
-                dispatch('exchangeToken')
+                if (!response){
+                    throw new Error('Something bad happened')
+                } else {
+                    dispatch('exchangeToken')
+                }
             } catch (error) {
                 commit('USER_LOGIN_FAILED')
                 commit('SET_LOADING', false)
@@ -105,6 +114,8 @@ export default {
                 await dispatch('_removeAuthTokenFromCookie')
                 commit('USER_LOGOUT_SUCCESS')
                 commit('SET_LOADING', false)
+                
+                window.location.reload()
             }
         },
 

@@ -46,7 +46,6 @@ export default Vue.extend({
   methods: {
     onLogout():void {
       this.$store.dispatch('auth/logout')
-      this.$router.push({name: 'Home'})
     }
   }
 })

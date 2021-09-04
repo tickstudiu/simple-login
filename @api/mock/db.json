@@ -1,16 +1,16 @@
 {
-  "projects": [
+  "users": [
     {
       "id": 1,
-      "title": "Created new homepage banner",
-      "details": "lorem ipsum",
-      "complete": true
-    },
+      "username": "username",
+      "password": "password"
+    }
+  ],
+  "me": [
     {
-      "id": 2,
-      "title": "Make marketing emailss",
-      "details": "lorem ipsum",
-      "complete": false
+      "id": 1,
+      "name": "username#001",
+      "details": "this is my first user in this website"
     }
   ]
 }
