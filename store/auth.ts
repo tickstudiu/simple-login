@@ -50,10 +50,17 @@ export default {
             })
         },
 
-        async loadTokensFromCookie({ commit }: any) {
+        async loadTokensFromCookie({ commit, dispatch }: any) {
             const { $cookies }: any = this
             const isLoggedIn = $cookies.get(AUTH_COOKIE_NAME.IS_LOGGED_IN)
-            if (isLoggedIn) commit('USER_LOGIN_SUCCESS')           
+            if (isLoggedIn) {
+                commit('USER_LOGIN_SUCCESS')
+                await dispatch('fetchUserData')
+            } else {
+                commit('USER_LOGIN_FAILED')
+                await dispatch('_removeAuthTokenFromCookie')
+            }
+            
         },
 
         async login(
@@ -99,6 +106,14 @@ export default {
                 commit('USER_LOGOUT_SUCCESS')
                 commit('SET_LOADING', false)
             }
+        },
+
+        fetchUserData({ state, dispatch }: any) {
+            return Promise.all([
+                state.isLoggedIn
+                    ? dispatch('me/fetchProfile', null, { root: true })
+                    : null,
+            ])
         },
     }
 }

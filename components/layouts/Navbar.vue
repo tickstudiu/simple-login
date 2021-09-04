@@ -10,7 +10,7 @@
     </nuxt-link>
     <template v-if="isLoggedIn"> 
       <nuxt-link class="link" :to="{name: 'Profile'}">
-        profile
+        {{profile.name}}
       </nuxt-link>
       <a class="link" @click="onLogout">
         logout
@@ -46,6 +46,7 @@ export default Vue.extend({
   methods: {
     onLogout():void {
       this.$store.dispatch('auth/logout')
+      this.$router.push({name: 'Home'})
     }
   }
 })
