@@ -1,0 +1,95 @@
+@import '../util/_index'
+
+
+.font
+  &-headline1
+    font-size: 30px
+    font-weight: 600
+
+    @include respond(2xl)
+      font-size: 42px
+
+  &-headline2
+    font-size: 26px
+    font-weight: 600
+
+    @include respond(2xl)
+      font-size: 38px
+
+  &-headline3
+    font-size: 22px
+    font-weight: 600
+
+    @include respond(2xl)
+      font-size: 34px
+
+  &-headline4
+    font-size: 20px
+    font-weight: 600
+
+    @include respond(lg)
+      font-size: 22px
+
+    @include respond(2xl)
+      font-size: 30px
+
+  &-headline5
+    font-size: 18px
+    font-weight: 600
+
+    @include respond(2xl)
+      font-size: 26px
+
+  &-headline6
+    font-size: 18px
+    font-weight: 600
+
+    @include respond(lg)
+      font-size: 18px
+
+    @include respond(2xl)
+      font-size: 22px
+
+  &-subtitle1
+    font-size: 16px
+    font-weight: 600
+
+    @include respond(2xl)
+      font-size: 18px
+
+  &-subtitle2
+    font-size: 16px
+    font-weight: 600
+
+  &-body1
+    font-size: 16px
+
+    @include respond(2xl)
+      font-size: 18px
+
+  &-body2
+    font-size: 16px
+
+  &-caption
+    font-size: 14px
+
+  &-button
+    font-size: 22px
+    font-weight: 500
+
+  &-overline
+    font-size: 10px
+
+// override headline tag
+h1
+  @extend .font-headline1
+h2
+  @extend .font-headline2
+h3
+  @extend .font-headline3
+h4
+  @extend .font-headline4
+h5
+  @extend .font-headline5
+h6
+  @extend .font-headline6

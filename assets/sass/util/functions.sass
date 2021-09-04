@@ -1,0 +1,22 @@
+@import './breakpoints'
+
+@mixin respond ($breakpoint)
+  @if $breakpoint == sm
+    @media (min-width: $screen-sm)
+      @content
+
+    @if $breakpoint == md
+      @media (min-width: $screen-md)
+        @content
+
+    @if $breakpoint == lg
+      @media (min-width: $screen-lg)
+        @content
+
+    @if $breakpoint == xl
+      @media (min-width: $screen-xl)
+        @content
+
+    @if $breakpoint == xl2
+      @media (min-width: $screen-2xl)
+        @content
