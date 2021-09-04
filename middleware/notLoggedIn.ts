@@ -3,6 +3,6 @@
  */
 export default ({ store, redirect }: any) => {
     if (store.state.auth.isLoggedIn) {
-        redirect('/')
+        redirect({ name: 'Home' })
     }
 }

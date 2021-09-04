@@ -12,9 +12,9 @@
       <nuxt-link class="link" :to="{name: 'Profile'}">
         profile
       </nuxt-link>
-      <nuxt-link class="link" :to="{name: 'Logout'}">
+      <a class="link" @click="onLogout">
         logout
-      </nuxt-link>
+      </a>
     </template>
     <template v-else>
       <nuxt-link class="link" :to="{name: 'Login'}">
@@ -42,6 +42,12 @@ export default Vue.extend({
     ...mapState('auth', ['isLoggedIn']),
     ...mapState('me', ['profile']),
   },
+
+  methods: {
+    onLogout():void {
+      this.$store.dispatch('auth/logout')
+    }
+  }
 })
 </script>
 
