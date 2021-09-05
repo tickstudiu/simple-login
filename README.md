@@ -1,4 +1,4 @@
-# udemy-simple-project
+# simple-login
 
 ## Build Setup
 
