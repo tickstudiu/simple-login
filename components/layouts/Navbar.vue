@@ -20,9 +20,6 @@
       <nuxt-link class="link" :to="{name: 'Login'}">
         login
       </nuxt-link>
-      <nuxt-link class="link" :to="{name: 'Register'}">
-        register
-      </nuxt-link>
     </template>
   </div>
 </template>

@@ -4,7 +4,6 @@ import Router from 'vue-router'
 import Home from '~/pages/Home.vue'
 import Login from '~/pages/Login.vue'
 import Profile from '~/pages/Profile.vue'
-import Register from '~/pages/Register.vue'
 
 Vue.use(Router)
 
@@ -24,12 +23,6 @@ const routes = [
     name: 'Profile',
     component: Profile,
   },
-  {
-    path: '/register',
-    name: 'Register',
-    component: Register,
-  },
-  
 ]
 
 export function createRouter(
