@@ -1,6 +1,8 @@
+import AUTH_COOKIE_NAME from '~/enums/authCookieName'
+import { Profile } from '@/types/me'
 export default {
     state: () => ({
-        profile: {},
+        profile: {} as Profile,
     }),
 
     mutations: {
@@ -16,7 +18,10 @@ export default {
     actions: {
         async fetchProfile({ commit }: any) {
             try {
-                commit('FETCH_PROFILE_SUCCESS', {name: 'Username#001'})
+                const { app, $cookies }: any = this
+                const username = $cookies.get(AUTH_COOKIE_NAME.USERNAME)
+                const response: Profile = await app.$services.me.profile({ username })
+                commit('FETCH_PROFILE_SUCCESS', response)
             } catch (error) {
                 commit('FETCH_PROFILE_ERROR', error)
             }

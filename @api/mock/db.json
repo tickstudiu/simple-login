@@ -9,6 +9,7 @@
   "me": [
     {
       "id": 1,
+      "username": "username",
       "name": "username#001",
       "details": "this is my first user in this website"
     }

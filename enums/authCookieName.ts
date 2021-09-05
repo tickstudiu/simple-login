@@ -8,6 +8,7 @@ export enum authCookieName {
     'ACCESS_TOKEN' = 'auth',
     'REFRESH_TOKEN' = 'refresh',
     'IS_LOGGED_IN' = 'isLoggedIn',
+    'USERNAME' = 'username',
 }
 
 export default authCookieName

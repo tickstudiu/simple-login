@@ -10,11 +10,15 @@ export default {
     state: () => ({
         isLoading: false,
         isLoggedIn: false,
+        username: '' as string
     }),
 
     mutations: {
         SET_LOADING(state: any, payload: boolean = false) {
             state.isLoading = payload
+        },
+        SET_USER(state: any, payload: string) {
+            state.username = payload
         },
 
         USER_LOGIN_SUCCESS(state: any) {
@@ -40,6 +44,11 @@ export default {
             $cookies.set(
                 AUTH_COOKIE_NAME.IS_LOGGED_IN,
                 state.isLoggedIn,
+                cookieOptions
+            )
+            $cookies.set(
+                AUTH_COOKIE_NAME.USERNAME,
+                state.username,
                 cookieOptions
             )
         },
@@ -77,7 +86,7 @@ export default {
                 if (!response){
                     throw new Error('Something bad happened')
                 } else {
-                    dispatch('exchangeToken')
+                    dispatch('exchangeToken', { username })
                 }
             } catch (error) {
                 commit('USER_LOGIN_FAILED')
@@ -89,11 +98,13 @@ export default {
 
         async exchangeToken(
             { commit, dispatch }: any,
+            { username }: { username: string}
         ) {
             try {
                 commit('SET_LOADING', true)
 
                 commit('USER_LOGIN_SUCCESS')
+                commit('SET_USER', username)
                 dispatch('_saveAuthStateToCookie', {
                     maxAge: 31536000, // 1 year
                 })
